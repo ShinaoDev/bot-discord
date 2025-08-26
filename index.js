@@ -16,9 +16,9 @@ const client = new Client({
 client.commands = new Collection();
 
 // Charger les commandes
-const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync(path.join(__dirname, 'src', 'commands')).filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
+  const command = require(`./src/commands/${file}`);
   if (command.data && command.execute) {
     client.commands.set(command.data.name, command);
   } else {
